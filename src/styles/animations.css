@@ -1,0 +1,260 @@
+/* ============================================
+   ANIMATIONS & KEYFRAMES
+   ============================================ */
+
+/* ── View transitions ── */
+@keyframes viewFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Toast ── */
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes toastOut {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(40px); }
+}
+
+/* ── Overlay ── */
+@keyframes overlayIn {
+  from { opacity: 0; transform: scale(0.95) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Pulse for offline indicator ── */
+@keyframes pulseOffline {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+.pulse-offline {
+  animation: pulseOffline 2s ease-in-out infinite;
+}
+
+/* ── Pulse for reconnecting ── */
+@keyframes pulseReconnect {
+  0%   { opacity: 0.5; transform: scale(1); }
+  50%  { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.5; transform: scale(1); }
+}
+
+.pulse-reconnect {
+  animation: pulseReconnect 1s ease-in-out infinite;
+}
+
+/* ── Network sweep on reconnect ── */
+@keyframes reconnectSweep {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.reconnect-sweep {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(34, 197, 94, 0.08) 40%,
+    rgba(34, 197, 94, 0.15) 50%,
+    rgba(34, 197, 94, 0.08) 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: reconnectSweep 1.5s var(--ease-out) forwards;
+}
+
+/* ── Conflict shake ── */
+@keyframes conflictShake {
+  0%, 100% { transform: translateX(0); }
+  10%      { transform: translateX(-4px); }
+  30%      { transform: translateX(4px); }
+  50%      { transform: translateX(-3px); }
+  70%      { transform: translateX(3px); }
+  90%      { transform: translateX(-1px); }
+}
+
+.conflict-shake {
+  animation: conflictShake 0.5s var(--ease-out);
+}
+
+/* ── Conflict pulse glow ── */
+@keyframes conflictPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(239, 68, 68, 0); }
+  50%      { box-shadow: 0 0 30px rgba(239, 68, 68, 0.15); }
+}
+
+.conflict-pulse {
+  animation: conflictPulse 2s ease-in-out infinite;
+}
+
+/* ── Swarm converge ── */
+@keyframes swarmNodeA {
+  0%   { transform: translate(-120px, -60px); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+
+@keyframes swarmNodeB {
+  0%   { transform: translate(120px, -60px); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+
+@keyframes swarmNodeC {
+  0%   { transform: translate(0, 100px); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+
+.swarm-node-a { animation: swarmNodeA 1.2s var(--ease-out) both; }
+.swarm-node-b { animation: swarmNodeB 1.2s var(--ease-out) 0.15s both; }
+.swarm-node-c { animation: swarmNodeC 1.2s var(--ease-out) 0.3s both; }
+
+/* ── Swarm center pulse ── */
+@keyframes swarmPulse {
+  0%   { transform: scale(0); opacity: 0; }
+  50%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.swarm-pulse {
+  animation: swarmPulse 0.6s var(--ease-spring) 1s both;
+}
+
+/* ── Resolution collapse ── */
+@keyframes resolutionCollapse {
+  0%   { opacity: 1; transform: scale(1); }
+  50%  { opacity: 0.5; transform: scale(0.97); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.resolution-collapse {
+  animation: resolutionCollapse 0.5s var(--ease-out);
+}
+
+/* ── Late evidence slide in ── */
+@keyframes lateEvidenceSlide {
+  0%   { transform: translateX(100px); opacity: 0; }
+  40%  { opacity: 1; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.late-evidence-slide {
+  animation: lateEvidenceSlide 0.8s var(--ease-out) both;
+}
+
+/* ── Review reopen flash ── */
+@keyframes reopenFlash {
+  0%   { background-color: transparent; }
+  20%  { background-color: rgba(249, 115, 22, 0.15); }
+  100% { background-color: transparent; }
+}
+
+.reopen-flash {
+  animation: reopenFlash 1.5s var(--ease-out);
+}
+
+/* ── Fade in up (generic) ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s var(--ease-out) both;
+}
+
+/* ── Stagger children ── */
+.stagger > * {
+  animation: fadeInUp 0.4s var(--ease-out) both;
+}
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 60ms; }
+.stagger > *:nth-child(3) { animation-delay: 120ms; }
+.stagger > *:nth-child(4) { animation-delay: 180ms; }
+.stagger > *:nth-child(5) { animation-delay: 240ms; }
+.stagger > *:nth-child(6) { animation-delay: 300ms; }
+.stagger > *:nth-child(7) { animation-delay: 360ms; }
+.stagger > *:nth-child(8) { animation-delay: 420ms; }
+
+/* ── Scale in (for badges, icons) ── */
+@keyframes scaleIn {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.scale-in {
+  animation: scaleIn 0.3s var(--ease-spring) both;
+}
+
+/* ── Typing line ── */
+@keyframes typingCursor {
+  0%, 100% { border-right-color: var(--text-primary); }
+  50%      { border-right-color: transparent; }
+}
+
+/* ── VS separator animation ── */
+@keyframes vsPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50%      { transform: scale(1.15); opacity: 1; }
+}
+
+.vs-pulse {
+  animation: vsPulse 1.5s ease-in-out infinite;
+}
+
+/* ── Radiate rings (for swarm detection) ── */
+@keyframes radiateRing {
+  0%   { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(3.5); opacity: 0; }
+}
+
+.radiate-ring {
+  animation: radiateRing 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* ── Dramatic reveal (for final screen) ── */
+@keyframes dramaticReveal {
+  0%   { opacity: 0; transform: translateY(30px); letter-spacing: 0.3em; }
+  100% { opacity: 1; transform: translateY(0); letter-spacing: 0.15em; }
+}
+
+.dramatic-reveal {
+  animation: dramaticReveal 1.5s var(--ease-out) both;
+}
+
+@keyframes dramaticFadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.dramatic-fade {
+  animation: dramaticFadeIn 1s var(--ease-out) both;
+}
+
+/* ── Connecting line between nodes ── */
+@keyframes drawLine {
+  from { stroke-dashoffset: 200; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* ── Status dot blink ── */
+@keyframes statusBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* ── Ambient Float (for background/ambient elements) ── */
+@keyframes ambientFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-10px) scale(1.02); }
+}
+
+.ambient-float {
+  animation: ambientFloat 6s ease-in-out infinite;
+}
+
+.ambient-float-delayed {
+  animation: ambientFloat 7s ease-in-out infinite 2s;
+}
