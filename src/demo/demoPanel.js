@@ -81,14 +81,6 @@ export function initDemoPanel(appRenderFn) {
   });
 
   buildPanel();
-
-  // Show welcome overlay on initial load if at step 0
-  setTimeout(() => {
-    if (!hasAutoStarted && getCurrentStep() === 0) {
-      hasAutoStarted = true;
-      showWelcomeOverlay();
-    }
-  }, 100);
 }
 
 export function togglePanel() {
@@ -207,37 +199,4 @@ function updatePanel() {
   );
 
   mount(panelEl, content);
-}
-
-function showWelcomeOverlay() {
-  const container = document.getElementById('overlay-container');
-  if (!container) return;
-
-  const overlay = el('div', { className: 'welcome-overlay' },
-    el('div', { className: 'welcome-modal' },
-      el('div', { className: 'welcome-icon' }, '✨'),
-      el('h2', { className: 'welcome-title' }, 'Welcome to PRATIDHWANI'),
-      el('p', { className: 'welcome-desc' }, 
-        'This is a step-by-step interactive demo of a distributed decision engine designed for disconnected environments.'
-      ),
-      el('p', { className: 'welcome-desc' }, 
-        'You will see the system handle events, detect conflicts, and request human resolution across three field nodes.'
-      ),
-      el('div', { className: 'welcome-actions' },
-        el('button', { 
-          className: 'btn-resolve', 
-          onClick: () => {
-            container.innerHTML = '';
-            startAutoPlay();
-            updatePanel();
-          }
-        }, '▶ START DEMO')
-      ),
-      el('div', { className: 'welcome-hint mono-sm' }, 
-        'You can also press "D" to toggle demo controls manually.'
-      )
-    )
-  );
-
-  mount(container, overlay);
 }

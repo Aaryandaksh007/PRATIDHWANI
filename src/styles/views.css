@@ -595,6 +595,73 @@
   line-height: var(--leading-relaxed);
 }
 
+.welcome-hero-features {
+  display: flex;
+  gap: var(--space-6);
+  justify-content: center;
+  margin-bottom: var(--space-10);
+  max-width: 900px;
+  width: 100%;
+}
+
+.welcome-feature-card {
+  flex: 1;
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.welcome-feature-card:hover {
+  transform: translateY(-4px);
+  background: var(--bg-glass-hover);
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.welcome-feature-icon {
+  font-size: 32px;
+  margin-bottom: var(--space-4);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 50%;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  color: var(--color-verified);
+}
+
+.welcome-feature-card:nth-child(2) .welcome-feature-icon {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.welcome-feature-card:nth-child(3) .welcome-feature-icon {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.2);
+}
+
+.welcome-feature-title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-2);
+  color: var(--text-primary);
+}
+
+.welcome-feature-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
 /* ============================================
    FIELD NODES PANEL — Three-Column Layout
    ============================================ */

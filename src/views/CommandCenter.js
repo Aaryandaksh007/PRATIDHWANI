@@ -68,13 +68,39 @@ export function CommandCenter() {
           'A distributed decision-integrity system for disconnected emergencies. When field stations lose connectivity, they independently gather evidence and commit resources. When they reconnect — conflicts surface, and humans decide.'
         ),
 
-        el('div', { className: 'welcome-hero-status dramatic-fade', style: { animationDelay: '1.0s' } },
-          el('div', { className: 'welcome-loading-indicator' },
-            el('span', { className: 'welcome-loading-dot' }),
-            'DEMO AUTO-STARTING...',
+        // IDEA-FOCUSED VISUAL CARDS
+        el('div', { className: 'welcome-hero-features dramatic-fade', style: { animationDelay: '0.9s' } },
+          el('div', { className: 'welcome-feature-card' },
+            el('div', { className: 'welcome-feature-icon' }, '📡'),
+            el('div', { className: 'welcome-feature-title' }, 'Offline Swarm'),
+            el('div', { className: 'welcome-feature-desc' }, 'Nodes operate independently in disconnected environments without centralized servers.')
           ),
-          el('div', { className: 'welcome-hero-hint', style: { marginTop: 'var(--space-3)' } },
-            'The 12-step scenario is running. Watch as field stations go dark, gather evidence independently, and reconnect to reveal conflicting decisions.'
+          el('div', { className: 'welcome-feature-card' },
+            el('div', { className: 'welcome-feature-icon' }, '⛓️'),
+            el('div', { className: 'welcome-feature-title' }, 'Cryptographic Truth'),
+            el('div', { className: 'welcome-feature-desc' }, 'Every event is cryptographically signed and stored in an immutable ledger.')
+          ),
+          el('div', { className: 'welcome-feature-card' },
+            el('div', { className: 'welcome-feature-icon' }, '👤'),
+            el('div', { className: 'welcome-feature-title' }, 'Human-in-the-Loop'),
+            el('div', { className: 'welcome-feature-desc' }, 'Algorithmic conflict detection isolates discrepancies for human command resolution.')
+          )
+        ),
+
+        el('div', { className: 'welcome-hero-status dramatic-fade', style: { animationDelay: '1.2s', marginTop: 'var(--space-6)', display: 'flex', flexDirection: 'column', alignItems: 'center' } },
+          el('button', { 
+            className: 'btn btn-primary welcome-start-btn',
+            style: { padding: 'var(--space-3) var(--space-6)', fontSize: 'var(--text-lg)', cursor: 'pointer', backgroundColor: 'var(--color-primary)', color: 'black', fontWeight: 'bold', border: 'none', borderRadius: '4px' },
+            onClick: async () => {
+              const { startAutoPlay } = await import('../demo/demoController.js');
+              startAutoPlay();
+              // Trigger app re-render
+              const { projectState } = await import('../engine/stateProjector.js');
+              window.dispatchEvent(new HashChangeEvent('hashchange'));
+            }
+          }, '▶ START SIMULATION'),
+          el('div', { className: 'welcome-hero-hint', style: { marginTop: 'var(--space-4)', maxWidth: '600px', textAlign: 'center', color: 'var(--text-secondary)' } },
+            'Run the 12-step scenario to watch as field stations go dark, gather evidence independently, and reconnect to reveal conflicting decisions.'
           ),
         ),
       ),
