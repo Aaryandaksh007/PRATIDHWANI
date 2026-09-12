@@ -890,3 +890,68 @@
 .stat-card-reopened .stat-card-value { color: var(--color-reopened); }
 .stat-card-verified .stat-card-value { color: var(--color-verified); }
 .stat-card-warning .stat-card-value  { color: var(--color-warning); }
+
+/* ── Welcome Overlay ── */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: var(--blur-md);
+  -webkit-backdrop-filter: var(--blur-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--space-4);
+  animation: fadeIn var(--duration-normal) var(--ease-out);
+}
+
+.welcome-modal {
+  background: var(--gradient-glass);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: modalEnter var(--duration-dramatic) var(--ease-spring);
+}
+
+.welcome-icon {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-4);
+}
+
+.welcome-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-4);
+  color: var(--text-primary);
+}
+
+.welcome-desc {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.welcome-actions {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.welcome-hint {
+  color: var(--text-tertiary);
+  margin-top: var(--space-4);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalEnter {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
